@@ -26,4 +26,19 @@
     background-color: #fafbfc;
     border-color: #e1e4e8;
 }
+.navbar{
+    z-index: 1;
+}
+
+.alert{
+    width: 15%;
+    min-width: 200px;
+    max-width: 500px;
+    text-align: center;
+    top: 2px;
+    position: fixed;
+    left: 40%;
+    z-index: 10;
+    display: none;
+}
 

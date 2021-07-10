@@ -40,6 +40,12 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="/index"><span class="glyphicon glyphicon-home"></span> Home</a>
         </div>
+        <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+                <input type="text" id="input-server" class="form-control" placeholder="localhost:2181"></input>
+            </div>
+            <button type="button" id="change-server" class="btn btn-default">Change Server</button>
+        </form>
     </div>
 </nav>
 <div class="clearfix nav-height"></div>
@@ -100,5 +106,7 @@
 
     /*]]>*/
 </script>
+
+<div class="alert alert-danger" role="alert" id="danger-frame"></div>
 </body>
 </html>

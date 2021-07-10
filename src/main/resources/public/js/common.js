@@ -9,6 +9,16 @@ function getUrlParam(name) {
     return null; //返回参数值
 }
 
+function checkZkServer(path){
+    if(path == null ){
+        return false;
+    }
+    var reg = new RegExp("^(([1-9]?\\d|1\\d{2}|2[0-4]\\d|25[0-5])\\.){3}([1-9]?\\d|1\\d{2}|2[0-4]\\d|25[0-5]):\\d*$ | ");
+    return reg.test(path);
+}
+
+
+
 function syntaxHighlight(json) {
     if( typeof json == 'undefined'){
         return "";
@@ -32,4 +42,13 @@ function syntaxHighlight(json) {
         }
         return '<span class="' + cls + '">' + match + '</span>';
     });
+}
+
+function dangerAlert(text){
+    dom = $("#danger-frame");
+    dom.text(text);
+    dom.fadeIn(2000,function(){
+        dom.fadeOut(2000);
+    });
+
 }

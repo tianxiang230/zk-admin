@@ -20,6 +20,23 @@ $("#save-node").click(function () {
     });
 });
 
+$("#change-server").click(function (){
+    zk_server = $("#input-server").val();
+    if( typeof zk_server == "undefined" || zk_server == null || zk_server === ''){
+        dangerAlert('缺少zk');
+        $("#input-server").focus();
+        return;
+    }
+    localStorage.setItem("zk",zk_server);
+    url  = window.location.href;
+    if(zk_server.indexOf('?') < 0){
+        url = url + '?'
+    }else{
+        url = url + '&';
+    }
+    window.location.href = url + 'zk=' + zk_server;
+});
+
 $("#delete-node").click(function () {
     var reqdata = {};
     reqdata.path = $("#input-path").val();
@@ -53,8 +70,24 @@ $(function () {
     }
     var zk = getUrlParam('zk');
     if( typeof zk == "undefined" || zk == null ){
-        alert("zk is null");
+        zk = localStorage.getItem('zk');
+
+        if(zk != null && zk != "undefined" && zk != ""){
+            $("#input-server").val(zk);
+            url  = window.location.href;
+            if(zk.indexOf('?') < 0){
+                url = url + '?'
+            }else{
+                url = url + '&';
+            }
+            window.location.href = url + 'zk=' + zk;
+        }
+        dangerAlert('缺少zk');
+        return;
+//        alert("zk is null");
     }
+    $("#input-server").val(zk);
+    localStorage.setItem('zk',zk);
     window.zk = zk;
     $('#jstree').jstree({
         "core" : {

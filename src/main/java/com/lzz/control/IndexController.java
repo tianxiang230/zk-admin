@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller
 public class IndexController {
-    @RequestMapping("/index")
+    @RequestMapping({"/index","/"})
     public String treeAdmin(Model model) {
         return "index";
     }
